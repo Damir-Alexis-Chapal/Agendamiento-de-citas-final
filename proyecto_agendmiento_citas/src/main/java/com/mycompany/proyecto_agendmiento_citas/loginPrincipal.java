@@ -84,7 +84,9 @@ public class loginPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAdminActionPerformed
 
     private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here
+        loginCliente verVentana = new loginCliente ();
+        verVentana.setVisible (true);
     }//GEN-LAST:event_btnClienteActionPerformed
 
     /**

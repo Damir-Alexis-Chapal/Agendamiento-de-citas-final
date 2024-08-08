@@ -46,6 +46,11 @@ public class loginCliente extends javax.swing.JFrame {
         jLabel2.setText("CONTRASEÑA");
 
         btnIniciarSesion.setText("INICIAR SESIÓN");
+        btnIniciarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIniciarSesionActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("YA SE REGISTRÓ?");
 
@@ -98,6 +103,13 @@ public class loginCliente extends javax.swing.JFrame {
     private void txtLoginUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoginUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLoginUsuarioActionPerformed
+
+    private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
+        // TODO add your handling code here:
+        
+        ventanaClientePr verVentana = new ventanaClientePr();
+        verVentana.setVisible (true);
+    }//GEN-LAST:event_btnIniciarSesionActionPerformed
 
     /**
      * @param args the command line arguments

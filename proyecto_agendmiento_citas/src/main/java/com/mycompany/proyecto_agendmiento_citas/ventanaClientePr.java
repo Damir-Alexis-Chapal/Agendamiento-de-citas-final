@@ -143,6 +143,7 @@ public class ventanaClientePr extends javax.swing.JFrame {
 
     private void btnReservarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReservarCitaActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnReservarCitaActionPerformed
 
     /**
