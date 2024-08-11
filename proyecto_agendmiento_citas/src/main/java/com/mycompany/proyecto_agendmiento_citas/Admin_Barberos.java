@@ -39,6 +39,7 @@ public class Admin_Barberos extends javax.swing.JFrame {
         BotonDespedirBarbero2 = new javax.swing.JButton();
         BotonDespedirBarbero3 = new javax.swing.JButton();
         BotonDespedirBarbero4 = new javax.swing.JButton();
+        BotonRegresarMenuAdmin = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
@@ -143,15 +144,28 @@ public class Admin_Barberos extends javax.swing.JFrame {
                 .addContainerGap(39, Short.MAX_VALUE))
         );
 
+        BotonRegresarMenuAdmin.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        BotonRegresarMenuAdmin.setText("FINALIZAR");
+        BotonRegresarMenuAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonRegresarMenuAdminActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(98, 98, 98)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(98, 98, 98)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(331, 331, 331)
+                        .addComponent(BotonRegresarMenuAdmin)))
                 .addContainerGap(112, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -161,7 +175,9 @@ public class Admin_Barberos extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(131, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(BotonRegresarMenuAdmin)
+                .addContainerGap(96, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, -1));
@@ -176,6 +192,12 @@ public class Admin_Barberos extends javax.swing.JFrame {
     private void CampoNombreBarbero2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoNombreBarbero2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CampoNombreBarbero2ActionPerformed
+
+    private void BotonRegresarMenuAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegresarMenuAdminActionPerformed
+        // TODO add your handling code here:
+        Menu_Admin verVentana = new Menu_Admin ();
+        verVentana.setVisible (true);
+    }//GEN-LAST:event_BotonRegresarMenuAdminActionPerformed
 
     /**
      * @param args the command line arguments
@@ -217,6 +239,7 @@ public class Admin_Barberos extends javax.swing.JFrame {
     private javax.swing.JButton BotonDespedirBarbero2;
     private javax.swing.JButton BotonDespedirBarbero3;
     private javax.swing.JButton BotonDespedirBarbero4;
+    private javax.swing.JButton BotonRegresarMenuAdmin;
     private javax.swing.JTextField CampoNombreBarbero2;
     private javax.swing.JTextField CampoNombreBarbero3;
     private javax.swing.JTextField CampoNombreBarbero4;

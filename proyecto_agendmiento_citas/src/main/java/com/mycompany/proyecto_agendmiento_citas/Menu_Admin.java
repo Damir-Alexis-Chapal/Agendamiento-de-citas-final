@@ -71,9 +71,19 @@ public class Menu_Admin extends javax.swing.JFrame {
 
         BotonAdminPersonal.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         BotonAdminPersonal.setText("ADMINISTRAR PERSONAL");
+        BotonAdminPersonal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonAdminPersonalActionPerformed(evt);
+            }
+        });
 
         BotonHistorial.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         BotonHistorial.setText("HISTORIAL");
+        BotonHistorial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonHistorialActionPerformed(evt);
+            }
+        });
 
         BotonAdminCitas.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         BotonAdminCitas.setText("ADMINISTRAR CITAS");
@@ -89,11 +99,10 @@ public class Menu_Admin extends javax.swing.JFrame {
                 .addGap(80, 80, 80)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(BotonRegistroPersonal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(BotonHistorial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BotonAdminPersonal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BotonReporteGanancias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BotonAdminCitas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(BotonHistorial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BotonAdminPersonal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BotonReporteGanancias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BotonAdminCitas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(75, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -140,7 +149,22 @@ public class Menu_Admin extends javax.swing.JFrame {
 
     private void BotonRegistroPersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistroPersonalActionPerformed
         // TODO add your handling code here:
+        Registro_Barbero verVentana = new Registro_Barbero ();
+        verVentana.setVisible (true);
     }//GEN-LAST:event_BotonRegistroPersonalActionPerformed
+
+    private void BotonAdminPersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAdminPersonalActionPerformed
+        // TODO add your handling code here:
+        Admin_Barberos verVentana = new Admin_Barberos ();
+        verVentana.setVisible (true);
+    }//GEN-LAST:event_BotonAdminPersonalActionPerformed
+
+    private void BotonHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonHistorialActionPerformed
+        // TODO add your handling code here:
+        Ventana_Historial verVentana = new Ventana_Historial ();
+        verVentana.setVisible (true);
+        
+    }//GEN-LAST:event_BotonHistorialActionPerformed
 
     /**
      * @param args the command line arguments

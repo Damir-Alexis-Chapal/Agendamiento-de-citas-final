@@ -69,6 +69,11 @@ public class ventanaClientePr extends javax.swing.JFrame {
         });
 
         btnVerCitaU.setText("VER CITA");
+        btnVerCitaU.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerCitaUActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -145,6 +150,12 @@ public class ventanaClientePr extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_btnReservarCitaActionPerformed
+
+    private void btnVerCitaUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerCitaUActionPerformed
+        // TODO add your handling code here:
+        ventanaEditarCitaU verVentana = new ventanaEditarCitaU ();
+        verVentana.setVisible (true);
+    }//GEN-LAST:event_btnVerCitaUActionPerformed
 
     /**
      * @param args the command line arguments

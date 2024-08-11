@@ -53,6 +53,11 @@ public class loginCliente extends javax.swing.JFrame {
         });
 
         jLabel3.setText("YA SE REGISTRÓ?");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -110,6 +115,13 @@ public class loginCliente extends javax.swing.JFrame {
         ventanaClientePr verVentana = new ventanaClientePr();
         verVentana.setVisible (true);
     }//GEN-LAST:event_btnIniciarSesionActionPerformed
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        // TODO add your handling code here:
+        formCliente verVentana = new formCliente ();
+        verVentana.setVisible (true);
+              
+    }//GEN-LAST:event_jLabel3MouseClicked
 
     /**
      * @param args the command line arguments

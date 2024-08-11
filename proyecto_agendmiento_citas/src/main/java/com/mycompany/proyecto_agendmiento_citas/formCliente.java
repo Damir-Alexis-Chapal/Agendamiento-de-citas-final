@@ -47,6 +47,11 @@ public class formCliente extends javax.swing.JFrame {
         jLabel2.setText("CONTRASEÑA");
 
         btnRegistrar.setText("REGISTRARSE");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("CONFIRMAR CONTRASEÑA");
 
@@ -102,6 +107,12 @@ public class formCliente extends javax.swing.JFrame {
     private void txtRegistroUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRegistroUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtRegistroUsuarioActionPerformed
+
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        // TODO add your handling code here:
+        loginCliente verVentana = new loginCliente ();
+        verVentana.setVisible(true);
+    }//GEN-LAST:event_btnRegistrarActionPerformed
 
     /**
      * @param args the command line arguments

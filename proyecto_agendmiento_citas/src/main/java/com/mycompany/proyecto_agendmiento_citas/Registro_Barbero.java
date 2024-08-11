@@ -151,6 +151,11 @@ public class Registro_Barbero extends javax.swing.JFrame {
 
         BotonRegistrar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         BotonRegistrar.setText("REGISTRAR");
+        BotonRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonRegistrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -205,6 +210,12 @@ public class Registro_Barbero extends javax.swing.JFrame {
     private void CampoIdentificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoIdentificacionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CampoIdentificacionActionPerformed
+
+    private void BotonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarActionPerformed
+        // TODO add your handling code here:
+        Menu_Admin verVentana = new Menu_Admin ();
+        verVentana.setVisible (true);
+    }//GEN-LAST:event_BotonRegistrarActionPerformed
 
     /**
      * @param args the command line arguments

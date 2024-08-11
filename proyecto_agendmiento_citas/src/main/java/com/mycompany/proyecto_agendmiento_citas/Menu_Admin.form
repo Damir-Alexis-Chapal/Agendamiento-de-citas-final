@@ -105,12 +105,10 @@
                       <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="BotonRegistroPersonal" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="BotonHistorial" alignment="0" max="32767" attributes="0"/>
-                              <Component id="BotonAdminPersonal" max="32767" attributes="0"/>
-                              <Component id="BotonReporteGanancias" max="32767" attributes="0"/>
-                              <Component id="BotonAdminCitas" alignment="0" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="BotonHistorial" alignment="0" max="32767" attributes="0"/>
+                          <Component id="BotonAdminPersonal" max="32767" attributes="0"/>
+                          <Component id="BotonReporteGanancias" max="32767" attributes="0"/>
+                          <Component id="BotonAdminCitas" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="75" max="32767" attributes="0"/>
                   </Group>
@@ -153,6 +151,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="ADMINISTRAR PERSONAL"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonAdminPersonalActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="BotonHistorial">
               <Properties>
@@ -161,6 +162,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="HISTORIAL"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonHistorialActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="BotonAdminCitas">
               <Properties>
