@@ -4,6 +4,9 @@
  */
 package com.mycompany.proyecto_agendmiento_citas;
 
+import java.awt.Color;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Alexis Chapal
@@ -15,6 +18,10 @@ public class loginCliente extends javax.swing.JFrame {
      */
     public loginCliente() {
         initComponents();
+        
+        //aqui voy a probar la conexión con la bd
+        conectar_bd conexion= new conectar_bd();
+        conexion.conectar();
     }
 
     /**
@@ -31,7 +38,7 @@ public class loginCliente extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtLogContraseñaU = new javax.swing.JTextField();
         btnIniciarSesion = new javax.swing.JToggleButton();
-        jLabel3 = new javax.swing.JLabel();
+        btn_registrarUsuario = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,10 +59,16 @@ public class loginCliente extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("YA SE REGISTRÓ?");
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn_registrarUsuario.setText("YA SE REGISTRÓ?");
+        btn_registrarUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
+                btn_registrarUsuarioMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_registrarUsuarioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_registrarUsuarioMouseExited(evt);
             }
         });
 
@@ -77,11 +90,11 @@ public class loginCliente extends javax.swing.JFrame {
                             .addComponent(txtLogContraseñaU, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtLoginUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(145, 145, 145)
-                        .addComponent(btnIniciarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(165, 165, 165)
-                        .addComponent(jLabel3)))
+                        .addComponent(btn_registrarUsuario))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(127, 127, 127)
+                        .addComponent(btnIniciarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(118, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -98,7 +111,7 @@ public class loginCliente extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addComponent(btnIniciarSesion)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
+                .addComponent(btn_registrarUsuario)
                 .addContainerGap(82, Short.MAX_VALUE))
         );
 
@@ -111,17 +124,32 @@ public class loginCliente extends javax.swing.JFrame {
 
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
         // TODO add your handling code here:
-        
-        ventanaClientePr verVentana = new ventanaClientePr();
-        verVentana.setVisible (true);
+        cliente validar_usuario= new cliente();
+        if (validar_usuario.validar_registro(txtLoginUsuario.getText(), txtLogContraseñaU.getText())) {
+                    JOptionPane.showMessageDialog(null, "Login exitoso!");
+                    ventanaClientePr verVentana= new ventanaClientePr();
+                    verVentana.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos.");
+                }
     }//GEN-LAST:event_btnIniciarSesionActionPerformed
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+    private void btn_registrarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_registrarUsuarioMouseClicked
         // TODO add your handling code here:
         formCliente verVentana = new formCliente ();
         verVentana.setVisible (true);
               
-    }//GEN-LAST:event_jLabel3MouseClicked
+    }//GEN-LAST:event_btn_registrarUsuarioMouseClicked
+
+    private void btn_registrarUsuarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_registrarUsuarioMouseEntered
+        // TODO add your handling code here:
+        btn_registrarUsuario.setForeground(new Color(0,153,153));
+    }//GEN-LAST:event_btn_registrarUsuarioMouseEntered
+
+    private void btn_registrarUsuarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_registrarUsuarioMouseExited
+        // TODO add your handling code here:
+        btn_registrarUsuario.setForeground(Color.black);
+    }//GEN-LAST:event_btn_registrarUsuarioMouseExited
 
     /**
      * @param args the command line arguments
@@ -160,9 +188,9 @@ public class loginCliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnIniciarSesion;
+    private javax.swing.JLabel btn_registrarUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField txtLogContraseñaU;
     private javax.swing.JTextField txtLoginUsuario;
     // End of variables declaration//GEN-END:variables

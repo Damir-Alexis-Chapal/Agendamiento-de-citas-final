@@ -4,6 +4,8 @@
  */
 package com.mycompany.proyecto_agendmiento_citas;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author angel
@@ -172,8 +174,16 @@ public class Ventana_Admin extends javax.swing.JFrame {
 
     private void BotonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonContinuarActionPerformed
         // TODO add your handling code here:
-        Menu_Admin verVentana = new Menu_Admin ();
-        verVentana.setVisible (true);
+        barbero barber = new barbero();
+
+        if (barber.validar_registro_barbero(CampoUsuario.getText(), CampoContraseña.getText())) {
+            JOptionPane.showMessageDialog(null, "Login exitoso!");
+            Menu_Admin verVentana = new Menu_Admin();
+            verVentana.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos.");
+        }
+
     }//GEN-LAST:event_BotonContinuarActionPerformed
 
     /**
