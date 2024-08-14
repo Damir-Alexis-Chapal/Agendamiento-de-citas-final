@@ -25,7 +25,7 @@ public class conectar_bd {
             
             // aqui establezco la conexión
             connection = DriverManager.getConnection(url, usuario, contraseña);
-            JOptionPane.showMessageDialog(null,"Conexión establecida");
+            System.out.println("CONEXION A LA BASE DE DATOS ESTABLECIDA CON EXITO");
         } catch (SQLException e) {
             e.printStackTrace();
         }

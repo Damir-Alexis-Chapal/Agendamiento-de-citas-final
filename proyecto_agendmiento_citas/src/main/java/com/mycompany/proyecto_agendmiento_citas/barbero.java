@@ -91,5 +91,65 @@ public class barbero {
         }
         return isValid;
     }
+    
+    public String buscarPorId(int id){
+        String nBarbero="";
+        Connection conexion = conectar_bd.conectar();
 
+        if (conexion != null) {
+            try {
+                String query = "SELECT * FROM barbero WHERE id = ?";
+                PreparedStatement preparedStatement = conexion.prepareStatement(query);
+                preparedStatement.setInt(1, id);
+               
+                ResultSet resultSet = preparedStatement.executeQuery();
+                if (resultSet.next()) {
+                   nBarbero = resultSet.getString("nombre");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    conexion.close();
+
+                } catch (SQLException e) {
+
+                    e.printStackTrace();
+                }
+            }
+        }
+        return nBarbero;
+         
+    }
+    public int obtenerId(String nombre){
+        
+        int id=0;
+        
+        Connection conexion= conectar_bd.conectar();
+        if (conexion != null) {
+            try {
+                String query = "SELECT * FROM barbero WHERE nombre = ?";
+                PreparedStatement preparedStatement = conexion.prepareStatement(query);
+                preparedStatement.setString(1, nombre);
+               
+                ResultSet resultSet = preparedStatement.executeQuery();
+                if (resultSet.next()) {
+                   id = resultSet.getInt("id");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    conexion.close();
+
+                } catch (SQLException e) {
+
+                    e.printStackTrace();
+                }
+            }
+        }
+        return id;
+        
+    }
+    
 }

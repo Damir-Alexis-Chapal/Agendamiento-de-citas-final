@@ -19,10 +19,9 @@ public class loginCliente extends javax.swing.JFrame {
     public loginCliente() {
         initComponents();
         
-        //aqui voy a probar la conexión con la bd
-        conectar_bd conexion= new conectar_bd();
-        conexion.conectar();
+        
     }
+    public static String nombreU="";
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -127,6 +126,7 @@ public class loginCliente extends javax.swing.JFrame {
         cliente validar_usuario= new cliente();
         if (validar_usuario.validar_registro(txtLoginUsuario.getText(), txtLogContraseñaU.getText())) {
                     JOptionPane.showMessageDialog(null, "Login exitoso!");
+                    nombreU=txtLoginUsuario.getText();
                     ventanaClientePr verVentana= new ventanaClientePr();
                     verVentana.setVisible(true);
                 } else {

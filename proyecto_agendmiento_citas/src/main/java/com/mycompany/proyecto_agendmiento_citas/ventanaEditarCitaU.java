@@ -61,17 +61,27 @@ public class ventanaEditarCitaU extends javax.swing.JFrame {
 
         jLabel6.setText("PRECIO: ");
 
+        txtUsuario.setEditable(false);
+
+        txtFecha.setEditable(false);
         txtFecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFechaActionPerformed(evt);
             }
         });
 
+        txtHora.setEditable(false);
+
+        txtServicio.setEditable(false);
+
+        txtBarbero.setEditable(false);
         txtBarbero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtBarberoActionPerformed(evt);
             }
         });
+
+        txtPrecio.setEditable(false);
 
         jToggleButton1.setText("CANCELAR CITA");
 
@@ -256,11 +266,11 @@ public class ventanaEditarCitaU extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JTextField txtBarbero;
-    private javax.swing.JTextField txtFecha;
-    private javax.swing.JTextField txtHora;
-    private javax.swing.JTextField txtPrecio;
-    private javax.swing.JTextField txtServicio;
-    private javax.swing.JTextField txtUsuario;
+    public static javax.swing.JTextField txtBarbero;
+    public static javax.swing.JTextField txtFecha;
+    public static javax.swing.JTextField txtHora;
+    public static javax.swing.JTextField txtPrecio;
+    public static javax.swing.JTextField txtServicio;
+    public static javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

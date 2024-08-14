@@ -4,6 +4,10 @@
  */
 package com.mycompany.proyecto_agendmiento_citas;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
+
 /**
  *
  * @author Alexis Chapal
@@ -16,6 +20,9 @@ public class reservarCita extends javax.swing.JFrame {
     public reservarCita() {
         initComponents();
     }
+    
+    public String nombreUsuario;
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,21 +33,403 @@ public class reservarCita extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        bgTipoServicio = new javax.swing.ButtonGroup();
+        jcDia = new javax.swing.JComboBox<>();
+        jcMes = new javax.swing.JComboBox<>();
+        jcAnio = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jcMinuto = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jcProfesional = new javax.swing.JComboBox<>();
+        jcHora = new javax.swing.JComboBox<>();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        rbBarberia = new javax.swing.JRadioButton();
+        rbPeluqueria = new javax.swing.JRadioButton();
+        rbFacial = new javax.swing.JRadioButton();
+        jLabel9 = new javax.swing.JLabel();
+        jcEstilo = new javax.swing.JComboBox<>();
+        btnContinuar = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        txtPrecioServicio = new javax.swing.JTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jcDia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcDiaActionPerformed(evt);
+            }
+        });
+
+        jcMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
+        jcMes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcMesActionPerformed(evt);
+            }
+        });
+
+        jcAnio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2024", " " }));
+
+        jLabel1.setText("DIA");
+
+        jLabel2.setText("MES");
+
+        jLabel3.setText("AÑO");
+
+        jLabel4.setText("HORA");
+
+        jLabel5.setText("MINUTO");
+
+        jcMinuto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "00", "15", "30", "45", " " }));
+
+        jLabel6.setText("RESERVACIÓN DE CITAS");
+
+        jLabel7.setText("PROFESIONAL");
+
+        jcProfesional.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcProfesionalActionPerformed(evt);
+            }
+        });
+
+        jcHora.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" }));
+        jcHora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcHoraActionPerformed(evt);
+            }
+        });
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("SERVICIOS"));
+
+        jLabel8.setText("TIPO DE SERVICIO");
+
+        bgTipoServicio.add(rbBarberia);
+        rbBarberia.setText("BARBERIA");
+        rbBarberia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbBarberiaActionPerformed(evt);
+            }
+        });
+
+        bgTipoServicio.add(rbPeluqueria);
+        rbPeluqueria.setText("PELUQUERIA");
+        rbPeluqueria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbPeluqueriaActionPerformed(evt);
+            }
+        });
+
+        bgTipoServicio.add(rbFacial);
+        rbFacial.setText("LAVADO FACIAL");
+        rbFacial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbFacialActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setText("ESTILO:");
+
+        jcEstilo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcEstiloActionPerformed(evt);
+            }
+        });
+
+        btnContinuar.setText("CONTINUAR");
+        btnContinuar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnContinuarActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setText("PRECIO: ");
+
+        txtPrecioServicio.setEditable(false);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rbFacial)
+                            .addComponent(rbBarberia)
+                            .addComponent(rbPeluqueria)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel10))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jcEstilo, 0, 145, Short.MAX_VALUE)
+                                    .addComponent(txtPrecioServicio)))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addComponent(jLabel8)))
+                .addContainerGap(63, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(rbBarberia)
+                .addGap(19, 19, 19)
+                .addComponent(rbFacial)
+                .addGap(18, 18, 18)
+                .addComponent(rbPeluqueria)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(jcEstilo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(txtPrecioServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addComponent(btnContinuar)
+                .addGap(22, 22, 22))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 680, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(22, 22, 22)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jcMinuto, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jcHora, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jcDia, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jcMes, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jcAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jcProfesional, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(jLabel7)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(80, 80, 80))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(214, 214, 214)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 473, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(102, 102, 102)
+                .addComponent(jLabel7)
+                .addGap(47, 47, 47)
+                .addComponent(jcProfesional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jcAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jcMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jcDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jcHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jcMinuto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5)))
+                    .addComponent(jLabel1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jcDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcDiaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcDiaActionPerformed
+
+    private void jcProfesionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcProfesionalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcProfesionalActionPerformed
+
+    private void jcMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcMesActionPerformed
+        // TODO add your handling code here:
+        String item = (String) jcMes.getSelectedItem();
+        if (item == "Agosto") {
+            
+            LocalDate fechaActual = LocalDate.now();
+            int diaDelMes = fechaActual.getDayOfMonth();
+            jcDia.removeAllItems();
+            int cont = diaDelMes;
+            while (cont <= 31) {
+
+                jcDia.addItem(String.valueOf(cont));
+                cont += 1;
+            }
+        }
+        if (item == "Septiembre") {
+            jcDia.removeAllItems();
+            int cont = 1;
+            while (cont <= 30) {
+
+                jcDia.addItem(String.valueOf(cont));
+                cont += 1;
+            }
+        }
+        if (item == "Octubre") {
+            jcDia.removeAllItems();
+            int cont = 1;
+            while (cont <= 31) {
+
+                jcDia.addItem(String.valueOf(cont));
+                cont += 1;
+            }
+        }
+        if (item == "Noviembre") {
+            jcDia.removeAllItems();
+            int cont = 1;
+            while (cont <= 30) {
+
+                jcDia.addItem(String.valueOf(cont));
+                cont += 1;
+            }
+        }
+        if (item == "Diciembre") {
+            jcDia.removeAllItems();
+            int cont = 1;
+            while (cont <= 31) {
+
+                jcDia.addItem(String.valueOf(cont));
+                cont += 1;
+            }
+        }
+    }//GEN-LAST:event_jcMesActionPerformed
+
+    private void jcHoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcHoraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcHoraActionPerformed
+
+    private void rbBarberiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbBarberiaActionPerformed
+        // TODO add your handling code here:
+        actualizarJc(new String[]{"BARBA COMPLETA", "BARBA DE TRES DIAS", "GOATEE"});
+    }//GEN-LAST:event_rbBarberiaActionPerformed
+
+    private void rbFacialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbFacialActionPerformed
+        // TODO add your handling code here:
+        actualizarJc(new String[]{"LAVADO BASICO", "EXFOLIACIÓN", "LAVADO CON VAPOR"});
+    }//GEN-LAST:event_rbFacialActionPerformed
+
+    private void rbPeluqueriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbPeluqueriaActionPerformed
+        // TODO add your handling code here:
+        actualizarJc(new String[]{"FADE", "POMPADOUR", "UNDERCUT"});
+    }//GEN-LAST:event_rbPeluqueriaActionPerformed
+
+    private void jcEstiloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcEstiloActionPerformed
+        // TODO add your handling code here:
+        String item = (String) jcEstilo.getSelectedItem();
+        if (item == "BARBA COMPLETA") {
+            txtPrecioServicio.setText("30000");
+        } else if (item == "BARBA DE TRES DIAS") {
+            txtPrecioServicio.setText("27000");
+        } else if (item == "GOATEE") {
+            txtPrecioServicio.setText("25000");
+        } else if (item == "LAVADO BASICO") {
+            txtPrecioServicio.setText("37000");
+        } else if (item == "EXFOLIACIÓN") {
+            txtPrecioServicio.setText("45000");
+        } else if (item == "LAVADO CON VAPOR") {
+            txtPrecioServicio.setText("35000");
+        } else if (item == "FADE") {
+            txtPrecioServicio.setText("40000");
+        } else if (item == "POMPADOUR") {
+            txtPrecioServicio.setText("47000");
+        } else if (item == "UNDERCUT") {
+            txtPrecioServicio.setText("35000");
+        }
+    }//GEN-LAST:event_jcEstiloActionPerformed
+
+    private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
+
+        conectar_bd conexion = new conectar_bd();
+        
+        cliente client= new cliente();
+        barbero barber= new barbero();
+        cita date= new cita();
+               
+        int hour=Integer.parseInt((String) jcHora.getSelectedItem());
+        int minuto= Integer.parseInt((String) jcMinuto.getSelectedItem());
+        int año=Integer.parseInt((String) jcAnio.getSelectedItem());
+        int dia=Integer.parseInt((String) jcDia.getSelectedItem());
+        int mes=0;
+        if(jcMes.getSelectedItem()=="Agosto"){
+            mes=8;
+        }
+        if(jcMes.getSelectedItem()=="Septiembre"){
+            mes=9;
+        }
+        if(jcMes.getSelectedItem()=="Octubre"){
+            mes=10;
+        }
+        if(jcMes.getSelectedItem()=="Noviembre"){
+            mes=11;
+        }
+        if(jcMes.getSelectedItem()=="Diciembre"){
+            mes=12;
+        }
+        
+        LocalDate fecha= LocalDate.of(año,mes,dia);
+        LocalTime hora= LocalTime.of(hour,minuto);
+        String servicio= (String)jcEstilo.getSelectedItem();
+        int precioServicio= Integer.parseInt(txtPrecioServicio.getText());
+        int idUsuario= client.obtenerId(loginCliente.nombreU);
+        int idBarbero= barber.obtenerId((String) jcProfesional.getSelectedItem());
+        
+        date.crearCita(idUsuario, idBarbero, fecha, hora, servicio, precioServicio);
+        
+       
+    }//GEN-LAST:event_btnContinuarActionPerformed
+
+    private void actualizarJc(String[] items) {
+        jcEstilo.removeAllItems();
+        for (String item : items) {
+            jcEstilo.addItem(item);
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -78,5 +467,29 @@ public class reservarCita extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup bgTipoServicio;
+    private javax.swing.JButton btnContinuar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JComboBox<String> jcAnio;
+    public static javax.swing.JComboBox<String> jcDia;
+    private javax.swing.JComboBox<String> jcEstilo;
+    private javax.swing.JComboBox<String> jcHora;
+    private javax.swing.JComboBox<String> jcMes;
+    private javax.swing.JComboBox<String> jcMinuto;
+    public static javax.swing.JComboBox<String> jcProfesional;
+    private javax.swing.JRadioButton rbBarberia;
+    private javax.swing.JRadioButton rbFacial;
+    private javax.swing.JRadioButton rbPeluqueria;
+    public static javax.swing.JTextField txtPrecioServicio;
     // End of variables declaration//GEN-END:variables
 }
