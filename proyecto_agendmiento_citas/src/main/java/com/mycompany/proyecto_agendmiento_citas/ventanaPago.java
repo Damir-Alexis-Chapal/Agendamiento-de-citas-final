@@ -4,6 +4,19 @@
  */
 package com.mycompany.proyecto_agendmiento_citas;
 
+import static com.mycompany.proyecto_agendmiento_citas.reservarCita.jcProfesional;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Alexis Chapal
@@ -15,6 +28,7 @@ public class ventanaPago extends javax.swing.JFrame {
      */
     public ventanaPago() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -39,8 +53,6 @@ public class ventanaPago extends javax.swing.JFrame {
         txtHora = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         txtTotal = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        txtEstilo = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -94,10 +106,6 @@ public class ventanaPago extends javax.swing.JFrame {
 
         txtTotal.setEditable(false);
 
-        jLabel1.setText("ESTILO:");
-
-        txtEstilo.setEditable(false);
-
         javax.swing.GroupLayout txtUsuarioLayout = new javax.swing.GroupLayout(txtUsuario);
         txtUsuario.setLayout(txtUsuarioLayout);
         txtUsuarioLayout.setHorizontalGroup(
@@ -111,29 +119,26 @@ public class ventanaPago extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                             .addComponent(txtUsuarioN, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(txtUsuarioLayout.createSequentialGroup()
-                            .addComponent(jLabel9)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(txtUsuarioLayout.createSequentialGroup()
                             .addGroup(txtUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(txtUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(txtUsuarioLayout.createSequentialGroup()
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(24, 24, 24))
-                                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(txtUsuarioLayout.createSequentialGroup()
                                     .addGroup(txtUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel10))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                    .addGap(18, 18, 18))
+                                .addGroup(txtUsuarioLayout.createSequentialGroup()
+                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(13, 13, 13)))
                             .addGroup(txtUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(txtFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
                                 .addComponent(txtBarbero)
                                 .addComponent(txtHora)
-                                .addComponent(txtTotal)
-                                .addComponent(txtEstilo))))
-                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(56, Short.MAX_VALUE))
+                                .addComponent(txtTotal))))
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(txtUsuarioLayout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addGap(24, 24, 24)
+                        .addComponent(txtServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         txtUsuarioLayout.setVerticalGroup(
             txtUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,15 +150,11 @@ public class ventanaPago extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txtUsuarioLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(txtUsuarioN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(52, 52, 52)
                 .addGroup(txtUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
-                .addGap(16, 16, 16)
-                .addGroup(txtUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtEstilo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
+                    .addComponent(jLabel9)
+                    .addComponent(txtServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(txtUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(txtBarbero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -284,7 +285,7 @@ public class ventanaPago extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addComponent(btnFinalizar)
                 .addGap(23, 23, 23))
         );
@@ -306,6 +307,87 @@ public class ventanaPago extends javax.swing.JFrame {
 
     private void btnFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarActionPerformed
         // TODO add your handling code here:
+
+        // Verificar que todos los campos necesarios estén llenos
+        if (txtTitularT.getText().isEmpty() || txtNumeroTarjeta.getText().isEmpty()
+                || txtMesExpiracion.getText().isEmpty() || txtAñoExpiracion.getText().isEmpty()
+                || txtCodigoSeguridad.getText().isEmpty() || txtFecha.getText().isEmpty()
+                || txtHora.getText().isEmpty() || txtServicio.getText().isEmpty()
+                || txtTotal.getText().isEmpty()) {
+
+            JOptionPane.showMessageDialog(null, "POR FAVOR LLENE TODOS LOS CAMPOS");
+            return;
+        }
+
+        Connection conexion = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            cita date = new cita();
+            cliente client = new cliente();
+            barbero barber = new barbero();
+
+            int idUsuario = client.obtenerId(loginCliente.nombreU);
+            int idBarbero = barber.obtenerId((String) jcProfesional.getSelectedItem());
+
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            LocalDate fechaA = LocalDate.parse(txtFecha.getText(), formatter);
+
+            DateTimeFormatter formatterDos = DateTimeFormatter.ofPattern("HH:mm:ss");
+            LocalTime time = LocalTime.parse(txtHora.getText(), formatterDos);
+
+            conexion = conectar_bd.conectar();
+
+            // Verificar si la cita ya existe
+            String checkQuery = "SELECT COUNT(*) FROM Cita WHERE fecha = ? AND hora = ? AND idBarbero = ?";
+            pstmt = conexion.prepareStatement(checkQuery);
+            pstmt.setDate(1, Date.valueOf(fechaA));
+            pstmt.setTime(2, Time.valueOf(time));
+            pstmt.setInt(3, idBarbero);
+            rs = pstmt.executeQuery();
+            if (rs.next() && rs.getInt(1) > 0) {
+                JOptionPane.showMessageDialog(null, "Ya existe una cita con la misma fecha, hora y barbero.");
+                return; 
+            }
+
+            // Crear cita si no hay duplicados
+            date.crearCita(idUsuario, idBarbero, fechaA, time, txtServicio.getText(), Integer.parseInt(txtTotal.getText()));
+
+            JOptionPane.showMessageDialog(null, "OPERACIÓN REALIZADA CON ÉXITO");
+            System.out.println("OPERACIÓN REALIZADA CON EXITO");
+
+        } catch (DateTimeParseException e) {
+            
+            JOptionPane.showMessageDialog(null, "Formato de fecha u hora incorrecto. Use dd/MM/yyyy para la fecha y HH:mm:ss para la hora.");
+            e.printStackTrace();
+        } catch (NumberFormatException e) {
+            
+            JOptionPane.showMessageDialog(null, "El total debe ser un número válido.");
+            e.printStackTrace();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Ocurrió un error en la base de datos. Intente nuevamente.");
+            e.printStackTrace();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ocurrió un error inesperado. Intente nuevamente.");
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+                if (conexion != null) {
+                    conexion.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+
     }//GEN-LAST:event_btnFinalizarActionPerformed
 
     /**
@@ -345,7 +427,6 @@ public class ventanaPago extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFinalizar;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -361,17 +442,16 @@ public class ventanaPago extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtAñoExpiracion;
-    private javax.swing.JTextField txtBarbero;
+    public static javax.swing.JTextField txtBarbero;
     private javax.swing.JTextField txtCodigoSeguridad;
-    private javax.swing.JTextField txtEstilo;
-    private javax.swing.JTextField txtFecha;
-    private javax.swing.JTextField txtHora;
+    public static javax.swing.JTextField txtFecha;
+    public static javax.swing.JTextField txtHora;
     private javax.swing.JTextField txtMesExpiracion;
     private javax.swing.JTextField txtNumeroTarjeta;
-    private javax.swing.JTextField txtServicio;
+    public static javax.swing.JTextField txtServicio;
     private javax.swing.JTextField txtTitularT;
-    private javax.swing.JTextField txtTotal;
+    public static javax.swing.JTextField txtTotal;
     private javax.swing.JPanel txtUsuario;
-    private javax.swing.JTextField txtUsuarioN;
+    public static javax.swing.JTextField txtUsuarioN;
     // End of variables declaration//GEN-END:variables
 }

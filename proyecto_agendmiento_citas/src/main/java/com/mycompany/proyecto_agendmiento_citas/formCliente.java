@@ -15,6 +15,7 @@ public class formCliente extends javax.swing.JFrame {
      */
     public formCliente() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

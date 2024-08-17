@@ -22,6 +22,7 @@ public class ventanaClientePr extends javax.swing.JFrame {
      */
     public ventanaClientePr() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -187,56 +188,51 @@ public class ventanaClientePr extends javax.swing.JFrame {
     }//GEN-LAST:event_btnReservarCitaActionPerformed
 
     private void btnVerCitaUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerCitaUActionPerformed
-
-        barbero nBar = new barbero();
-        ventanaEditarCitaU verVentana = new ventanaEditarCitaU();
-        cliente client = new cliente();
-        int clienteID = client.obtenerId(loginCliente.nombreU);
-        System.out.println("Cliente ID: " + clienteID);
-        //String nClient = client.buscarPorId(clienteID);
-
-        Connection conexion = conectar_bd.conectar();
+       ventanaEditarCitaU verVentana= new ventanaEditarCitaU(); 
+        
+       Connection conexion = conectar_bd.conectar();
+       
         if (conexion != null) {
             try {
-                String query = "SELECT fecha, hora, idCliente, idBarbero, servicio, precioServicio FROM Cita WHERE idCliente= ?";
+                String query = "SELECT * FROM Cita";
                 PreparedStatement preparedStatement = conexion.prepareStatement(query);
-                preparedStatement.setLong(1, clienteID);
-
+                String cita = "";
                 ResultSet resultSet = preparedStatement.executeQuery();
-                if (resultSet.next()) {
-                    System.out.println("Cita encontrada para el cliente.");
-                    Date fecha = resultSet.getDate("fecha");
-                    Time hora = resultSet.getTime("hora");
-                    int barbero_id = resultSet.getInt("idBarbero");
-                    String service = resultSet.getString("servicio");
-                    int precio_servicio = resultSet.getInt("precioServicio");
-
-                    verVentana.txtUsuario.setText(loginCliente.nombreU);
-                    verVentana.txtFecha.setText(fecha.toString());
-                    verVentana.txtHora.setText(hora.toString());
-
-                    String nombreB = nBar.buscarPorId(barbero_id);
-                    verVentana.txtBarbero.setText(nombreB);
-                    verVentana.txtServicio.setText(service);
-                    verVentana.txtPrecio.setText(String.valueOf(precio_servicio));
-
-                    verVentana.setVisible(true);
-                } else {
-                    System.out.println("No se encontraron citas para el cliente.");
+                while (resultSet.next()) {
+                    cita = resultSet.getString("id");
+                    verVentana.jcCitas.addItem(cita);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } 
+        }
+         
+        if (conexion != null) {
+            try {
+                String queryDos = "SELECT * FROM barbero";
+                PreparedStatement preparedStatement = conexion.prepareStatement(queryDos);
+                String profesional = "";
+                ResultSet resultSetDos = preparedStatement.executeQuery();
+                while (resultSetDos.next()) {
+                    profesional = resultSetDos.getString("nombre");
+                    verVentana.jcProfesiona.addItem(profesional);
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
             } finally {
-                if (conexion != null) {
-                    try {
-                        conexion.close();
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
+                try {
+                    conexion.close();
+
+                } catch (SQLException e) {
+
+                    e.printStackTrace();
                 }
             }
         }
-
+        
+        
+        
+        verVentana.setVisible(true);
 
     }//GEN-LAST:event_btnVerCitaUActionPerformed
 

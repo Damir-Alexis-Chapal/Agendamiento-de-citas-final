@@ -6,7 +6,9 @@ package com.mycompany.proyecto_agendmiento_citas;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import javax.swing.ButtonModel;
 
 /**
  *
@@ -19,6 +21,7 @@ public class reservarCita extends javax.swing.JFrame {
      */
     public reservarCita() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
     
     public String nombreUsuario;
@@ -384,13 +387,7 @@ public class reservarCita extends javax.swing.JFrame {
     }//GEN-LAST:event_jcEstiloActionPerformed
 
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
-
-        conectar_bd conexion = new conectar_bd();
-        
-        cliente client= new cliente();
-        barbero barber= new barbero();
-        cita date= new cita();
-               
+             
         int hour=Integer.parseInt((String) jcHora.getSelectedItem());
         int minuto= Integer.parseInt((String) jcMinuto.getSelectedItem());
         int año=Integer.parseInt((String) jcAnio.getSelectedItem());
@@ -414,13 +411,25 @@ public class reservarCita extends javax.swing.JFrame {
         
         LocalDate fecha= LocalDate.of(año,mes,dia);
         LocalTime hora= LocalTime.of(hour,minuto);
-        String servicio= (String)jcEstilo.getSelectedItem();
         int precioServicio= Integer.parseInt(txtPrecioServicio.getText());
-        int idUsuario= client.obtenerId(loginCliente.nombreU);
-        int idBarbero= barber.obtenerId((String) jcProfesional.getSelectedItem());
         
-        date.crearCita(idUsuario, idBarbero, fecha, hora, servicio, precioServicio);
+        ventanaPago verVent= new ventanaPago();
         
+        verVent.txtUsuarioN.setText(loginCliente.nombreU);
+        verVent.txtServicio.setText((String)jcEstilo.getSelectedItem());
+        verVent.txtBarbero.setText((String) jcProfesional.getSelectedItem());
+        
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String dateString = fecha.format(formatter);
+        verVent.txtFecha.setText(dateString);
+        
+        DateTimeFormatter formatterDos = DateTimeFormatter.ofPattern("HH:mm:ss");
+        String timeString = hora.format(formatterDos);
+        verVent.txtHora.setText(timeString);
+        
+        verVent.txtTotal.setText(String.valueOf(precioServicio));
+        
+        verVent.setVisible(true);
        
     }//GEN-LAST:event_btnContinuarActionPerformed
 
@@ -467,7 +476,7 @@ public class reservarCita extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup bgTipoServicio;
+    public static javax.swing.ButtonGroup bgTipoServicio;
     private javax.swing.JButton btnContinuar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

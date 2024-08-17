@@ -18,7 +18,7 @@ public class loginCliente extends javax.swing.JFrame {
      */
     public loginCliente() {
         initComponents();
-        
+        this.setLocationRelativeTo(null);
         
     }
     public static String nombreU="";
