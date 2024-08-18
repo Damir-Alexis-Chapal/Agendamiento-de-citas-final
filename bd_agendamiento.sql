@@ -45,6 +45,9 @@ DELETE FROM barbero;
 
 select SUM(precioServicio) AS GananciaTotal from Cita;
 
+ALTER TABLE barbero ADD CONSTRAINT unique_nombre_apellido UNIQUE (nombre, apellido);
+ALTER TABLE cliente ADD CONSTRAINT unique_nombreU_contraseña UNIQUE (nombre_usuario, contraseña);
+
 
 
 

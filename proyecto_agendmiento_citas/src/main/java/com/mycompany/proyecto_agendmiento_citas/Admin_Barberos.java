@@ -159,7 +159,7 @@ public class Admin_Barberos extends javax.swing.JFrame {
     private void BotonDespedirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonDespedirActionPerformed
         // TODO add your handling code here:
         
-        int op = Integer.parseInt(JOptionPane.showInputDialog(null, "¿ESTÁS SEGURO QUE DESEA DESPEDIR AL BARBERO? \n\n1.Si\n2.No"));
+       int op = Integer.parseInt(JOptionPane.showInputDialog(null, "ESTÁS SEGURO DE DESPEDIR AL\nBARBERO?\n\n1.Si\n2.No"));
         switch (op) {
 
             case 1:
@@ -170,14 +170,16 @@ public class Admin_Barberos extends javax.swing.JFrame {
                     String query = "DELETE FROM barbero WHERE id = ?";
 
                     preparedStatement = conexion.prepareStatement(query);
-                    preparedStatement.setLong(1, Integer.parseInt((String) jcBarberos.getSelectedItem()));
-                    barbero barberos = new barbero();
-                    preparedStatement.setInt(1, barberos.obtenerId((String)jcBarberos.getSelectedItem()) );
+                    barbero barbero = new barbero();
+                    preparedStatement.setLong(1,barbero.obtenerId(jcBarberos.getSelectedItem().toString()));
+                    preparedStatement.setInt(1,barbero.obtenerId(jcBarberos.getSelectedItem().toString()));
+
                     int rowsAffected = preparedStatement.executeUpdate();
-                    if (rowsAffected > 0) {
-                        System.out.println("El registro fue eliminado exitosamente.");
+                    if (rowsAffected > 0) {                      
+                        jcBarberos.removeItem(jcBarberos.getSelectedItem());
+                        JOptionPane.showMessageDialog(null,"El barbero fue despedido");
                     } else {
-                        System.out.println("No se encontró ningún registro con el ID especificado.");
+                        System.out.println("No se encontró ningún barbero con el ID especificado.");
                     }
 
                 } catch (SQLException e) {

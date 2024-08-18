@@ -49,7 +49,7 @@ public class ventanaEditarCitaU extends javax.swing.JFrame {
         txtServicio = new javax.swing.JTextField();
         txtBarbero = new javax.swing.JTextField();
         txtPrecio = new javax.swing.JTextField();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        btnCancelarCita = new javax.swing.JToggleButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -100,10 +100,10 @@ public class ventanaEditarCitaU extends javax.swing.JFrame {
 
         txtPrecio.setEditable(false);
 
-        jToggleButton1.setText("CANCELAR CITA");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelarCita.setText("CANCELAR CITA");
+        btnCancelarCita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                btnCancelarCitaActionPerformed(evt);
             }
         });
 
@@ -176,7 +176,7 @@ public class ventanaEditarCitaU extends javax.swing.JFrame {
                             .addComponent(jcCitas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(85, 85, 85)
-                        .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnCancelarCita, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -210,9 +210,9 @@ public class ventanaEditarCitaU extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
                             .addComponent(jLabel8))
@@ -249,7 +249,6 @@ public class ventanaEditarCitaU extends javax.swing.JFrame {
                                     .addComponent(txtServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel5)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jcAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel15))
@@ -273,7 +272,7 @@ public class ventanaEditarCitaU extends javax.swing.JFrame {
                             .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6))
                         .addGap(18, 18, 18)
-                        .addComponent(jToggleButton1)))
+                        .addComponent(btnCancelarCita)))
                 .addContainerGap(69, Short.MAX_VALUE))
         );
 
@@ -337,7 +336,7 @@ public class ventanaEditarCitaU extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jcCitasActionPerformed
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+    private void btnCancelarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarCitaActionPerformed
         // TODO add your handling code here:
 
         int op = Integer.parseInt(JOptionPane.showInputDialog(null, "ESTÁS SEGURO DE CANCELAR LA\nCITA?, NO TENDRÁS REEMBOLSO\n\n1.Si\n2.No"));
@@ -383,7 +382,7 @@ public class ventanaEditarCitaU extends javax.swing.JFrame {
         }
 
 
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    }//GEN-LAST:event_btnCancelarCitaActionPerformed
 
     private void jcDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcDiaActionPerformed
         // TODO add your handling code here:
@@ -551,6 +550,7 @@ public class ventanaEditarCitaU extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton btnCancelarCita;
     private javax.swing.JButton btnEditar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
@@ -565,7 +565,6 @@ public class ventanaEditarCitaU extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JComboBox<String> jcAnio;
     public static javax.swing.JComboBox<String> jcCitas;
     public static javax.swing.JComboBox<String> jcDia;
