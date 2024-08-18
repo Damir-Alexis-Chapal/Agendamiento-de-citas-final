@@ -4,12 +4,15 @@
  */
 package com.mycompany.proyecto_agendmiento_citas;
 
+import static com.mycompany.proyecto_agendmiento_citas.reservarCita.jcDia;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.time.LocalDate;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -48,6 +51,7 @@ public class ventanaClientePr extends javax.swing.JFrame {
         btnVerCitaU = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setText("SERVICIOS");
 
@@ -108,15 +112,15 @@ public class ventanaClientePr extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel4)
-                        .addGap(72, 72, 72))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10)
                             .addComponent(jLabel9))
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel4)
+                        .addGap(72, 72, 72))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(101, 101, 101)
                 .addComponent(btnReservarCita, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -183,19 +187,32 @@ public class ventanaClientePr extends javax.swing.JFrame {
             }
         }
 
+        LocalDate fechaActual = LocalDate.now();
+        int diaDelMes = fechaActual.getDayOfMonth();
+        verVentana.jcDia.removeAllItems();
+        int cont = diaDelMes;
+        while (cont <= 31) {
+
+            verVentana.jcDia.addItem(String.valueOf(cont));
+            cont += 1;
+        }
         verVentana.setVisible(true);
 
     }//GEN-LAST:event_btnReservarCitaActionPerformed
 
     private void btnVerCitaUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerCitaUActionPerformed
-       ventanaEditarCitaU verVentana= new ventanaEditarCitaU(); 
-        
-       Connection conexion = conectar_bd.conectar();
-       
+        ventanaEditarCitaU verVentana = new ventanaEditarCitaU();
+
+        Connection conexion = conectar_bd.conectar();
+
         if (conexion != null) {
             try {
-                String query = "SELECT * FROM Cita";
+                String query = "SELECT * FROM Cita WHERE idCliente=?";
                 PreparedStatement preparedStatement = conexion.prepareStatement(query);
+                loginCliente vn = new loginCliente();
+                cliente clint = new cliente();
+                int idC = clint.obtenerId(vn.nombreU);
+                preparedStatement.setInt(1, idC);
                 String cita = "";
                 ResultSet resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()) {
@@ -204,9 +221,9 @@ public class ventanaClientePr extends javax.swing.JFrame {
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
-            } 
+            }
         }
-         
+
         if (conexion != null) {
             try {
                 String queryDos = "SELECT * FROM barbero";
@@ -229,10 +246,12 @@ public class ventanaClientePr extends javax.swing.JFrame {
                 }
             }
         }
-        
-        
-        
-        verVentana.setVisible(true);
+
+        if (verVentana.jcCitas.getItemCount() == 0) {
+            JOptionPane.showMessageDialog(null, "EL USUARIO NO TIENE CITAS PROGRAMADAS");
+        } else {
+            verVentana.setVisible(true);
+        }
 
     }//GEN-LAST:event_btnVerCitaUActionPerformed
 

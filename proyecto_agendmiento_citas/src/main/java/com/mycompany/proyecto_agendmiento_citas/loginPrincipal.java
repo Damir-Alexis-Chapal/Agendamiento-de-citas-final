@@ -32,6 +32,7 @@ public class loginPrincipal extends javax.swing.JFrame {
         btnCliente = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setText("BARBER 15 PRO MAX");
 

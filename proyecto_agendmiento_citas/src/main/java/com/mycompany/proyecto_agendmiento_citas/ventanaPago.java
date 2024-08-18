@@ -68,7 +68,8 @@ public class ventanaPago extends javax.swing.JFrame {
         txtCodigoSeguridad = new javax.swing.JTextField();
         btnFinalizar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         txtUsuario.setBorder(javax.swing.BorderFactory.createTitledBorder("CARRITO"));
 
@@ -120,14 +121,10 @@ public class ventanaPago extends javax.swing.JFrame {
                             .addComponent(txtUsuarioN, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(txtUsuarioLayout.createSequentialGroup()
                             .addGroup(txtUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(txtUsuarioLayout.createSequentialGroup()
-                                    .addGroup(txtUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel10))
-                                    .addGap(18, 18, 18))
-                                .addGroup(txtUsuarioLayout.createSequentialGroup()
-                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(13, 13, 13)))
+                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel10)
+                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
                             .addGroup(txtUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(txtFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
                                 .addComponent(txtBarbero)
@@ -279,13 +276,13 @@ public class ventanaPago extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel2)
-                .addGap(44, 44, 44)
+                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(btnFinalizar)
                 .addGap(23, 23, 23))
         );
@@ -314,11 +311,11 @@ public class ventanaPago extends javax.swing.JFrame {
                 || txtCodigoSeguridad.getText().isEmpty() || txtFecha.getText().isEmpty()
                 || txtHora.getText().isEmpty() || txtServicio.getText().isEmpty()
                 || txtTotal.getText().isEmpty()) {
-
+            
             JOptionPane.showMessageDialog(null, "POR FAVOR LLENE TODOS LOS CAMPOS");
             return;
         }
-
+        
         Connection conexion = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -353,9 +350,9 @@ public class ventanaPago extends javax.swing.JFrame {
 
             // Crear cita si no hay duplicados
             date.crearCita(idUsuario, idBarbero, fechaA, time, txtServicio.getText(), Integer.parseInt(txtTotal.getText()));
-
-            JOptionPane.showMessageDialog(null, "OPERACIÓN REALIZADA CON ÉXITO");
+            JOptionPane.showMessageDialog(null, "SE CREÓ LA CITA, GRACIAS POR PREFERIRNOS!!");
             System.out.println("OPERACIÓN REALIZADA CON EXITO");
+            this.dispose();
 
         } catch (DateTimeParseException e) {
             
