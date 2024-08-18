@@ -15,6 +15,9 @@ public class Ventana_Historial extends javax.swing.JFrame {
      */
     public Ventana_Historial() {
         initComponents();
+        barbero objetoCita = new barbero();  
+        objetoCita.mostrarHistorialCitas(jTable1);
+    
     }
 
     /**
@@ -60,13 +63,13 @@ public class Ventana_Historial extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "BARBERO", "SERVICIO", "PRECIO", "FECHA"
+
             }
         ));
         jScrollPane1.setViewportView(jTable1);

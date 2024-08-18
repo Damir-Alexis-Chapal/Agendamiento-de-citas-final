@@ -16,6 +16,8 @@ public class Registro_Barbero extends javax.swing.JFrame {
     public Registro_Barbero() {
         initComponents();
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,12 +33,12 @@ public class Registro_Barbero extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jlabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         CampoNombre = new javax.swing.JTextField();
-        CampoIdentificacion = new javax.swing.JTextField();
+        CampoApellido = new javax.swing.JTextField();
         CampoCorreo = new javax.swing.JTextField();
         CampoTelefono = new javax.swing.JTextField();
         CampoSalario = new javax.swing.JTextField();
@@ -70,8 +72,8 @@ public class Registro_Barbero extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         jLabel2.setText("NOMBRE");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        jLabel3.setText("IDENTIFICACIÓN");
+        jlabel3.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        jlabel3.setText("APELLIDO");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         jLabel4.setText("CORREO ELECTRÓNICO");
@@ -89,10 +91,10 @@ public class Registro_Barbero extends javax.swing.JFrame {
             }
         });
 
-        CampoIdentificacion.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        CampoIdentificacion.addActionListener(new java.awt.event.ActionListener() {
+        CampoApellido.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        CampoApellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CampoIdentificacionActionPerformed(evt);
+                CampoApellidoActionPerformed(evt);
             }
         });
 
@@ -110,14 +112,14 @@ public class Registro_Barbero extends javax.swing.JFrame {
                 .addGap(38, 38, 38)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
+                    .addComponent(jlabel3)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(CampoNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
-                    .addComponent(CampoIdentificacion)
+                    .addComponent(CampoApellido)
                     .addComponent(CampoCorreo)
                     .addComponent(CampoTelefono)
                     .addComponent(CampoSalario))
@@ -132,8 +134,8 @@ public class Registro_Barbero extends javax.swing.JFrame {
                     .addComponent(CampoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(CampoIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jlabel3)
+                    .addComponent(CampoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -207,14 +209,18 @@ public class Registro_Barbero extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_CampoNombreActionPerformed
 
-    private void CampoIdentificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoIdentificacionActionPerformed
+    private void CampoApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoApellidoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CampoIdentificacionActionPerformed
+    }//GEN-LAST:event_CampoApellidoActionPerformed
 
     private void BotonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarActionPerformed
         // TODO add your handling code here:
         Menu_Admin verVentana = new Menu_Admin ();
         verVentana.setVisible (true);
+
+        barbero insertion = new barbero();
+        insertion.registrar_barbero(CampoNombre.getText(),  CampoApellido.getText());
+        this.dispose();
     }//GEN-LAST:event_BotonRegistrarActionPerformed
 
     /**
@@ -254,19 +260,19 @@ public class Registro_Barbero extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonRegistrar;
+    private javax.swing.JTextField CampoApellido;
     private javax.swing.JTextField CampoCorreo;
-    private javax.swing.JTextField CampoIdentificacion;
     private javax.swing.JTextField CampoNombre;
     private javax.swing.JTextField CampoSalario;
     private javax.swing.JTextField CampoTelefono;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel jlabel3;
     // End of variables declaration//GEN-END:variables
 }

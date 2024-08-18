@@ -8,7 +8,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -47,7 +50,7 @@ public class barbero {
     public void registrar_barbero(String nombre, String apellido) {
 
         conectar_bd conexion = new conectar_bd();
-        String insertar = "INSERT INTO barbero (nombre, apellido) VALUES (?,?)";
+        String insertar = "INSERT INTO barbero (nombre,apellido) VALUES (?,?)";
         try {
             //enlazo la conexion a la bd con la informacion a insertar
             PreparedStatement cs = conexion.conectar().prepareCall(insertar);
@@ -152,4 +155,47 @@ public class barbero {
         
     }
     
-}
+    public void mostrarHistorialCitas(JTable TablaMostrarCitas){
+        
+        conectar_bd conexion = new conectar_bd ();
+        DefaultTableModel modelo = new DefaultTableModel();
+        
+        String consultaSql = "";
+        
+        modelo.addColumn("id");
+        modelo.addColumn("fecha");
+        modelo.addColumn("hora");
+        modelo.addColumn("idCliente");
+        modelo.addColumn("idBarbero");
+        modelo.addColumn("servicio");
+        modelo.addColumn("precioServicio");
+        
+        TablaMostrarCitas.setModel(modelo);
+        
+        consultaSql = "select * from Cita;	";
+        
+        String[] datosCitas = new String[7];
+        Statement st; 
+        try{
+            st = conexion.conectar().createStatement();
+            ResultSet ts = st.executeQuery(consultaSql);
+            
+            while(ts.next()){
+                
+                datosCitas[0]= ts.getString(1);
+                datosCitas[1]= ts.getString(2);
+                datosCitas[2]= ts.getString(3);
+                datosCitas[3]= ts.getString(4);
+                datosCitas[4]= ts.getString(5);
+                datosCitas[5]= ts.getString(6);
+                datosCitas[6]= ts.getString(7);
+                
+                modelo.addRow(datosCitas); 
+            }
+        }
+        catch(Exception e){  
+            JOptionPane.showMessageDialog(null, "no se pudo mostrar los registros. error" + e.toString());
+        }
+    }
+    }
+

@@ -4,6 +4,8 @@
  */
 package com.mycompany.proyecto_agendmiento_citas;
 
+import java.sql.PreparedStatement;
+
 /**
  *
  * @author angel
@@ -155,8 +157,9 @@ public class Menu_Admin extends javax.swing.JFrame {
 
     private void BotonAdminPersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAdminPersonalActionPerformed
         // TODO add your handling code here:
-        Admin_Barberos verVentana = new Admin_Barberos ();
-        verVentana.setVisible (true);
+        Admin_Barberos verVentana = new Admin_Barberos();
+        verVentana.setVisible(true);
+
     }//GEN-LAST:event_BotonAdminPersonalActionPerformed
 
     private void BotonHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonHistorialActionPerformed
