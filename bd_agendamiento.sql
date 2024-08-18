@@ -28,17 +28,23 @@ CREATE TABLE Cita (
 );
 
 
-
 INSERT INTO cliente (nombre, apellido, contraseña, nombre_usuario) VALUES ('Alexis', 'Cha','follamarias','alexis23');
 INSERT INTO cliente (nombre, apellido, contraseña, nombre_usuario) VALUES ('Maria', 'De los angeles', 'holabb','qmaspues');
 
 INSERT INTO barbero(nombre, apellido) VALUES ('admin', 'admin');
 INSERT INTO barbero(nombre, apellido) VALUES ('alexis', 'admin');
-INSERT INTO barbero(nombre, apellido) VALUES ('damir', 'admin');
+INSERT INTO barbero(nombre, apellido) VALUES ('angel', 'admin');
 
 show tables;
 
 select * from cliente;
-select * from Cita;
+select * from Cita;	
 select * from barbero;
+
+DELETE FROM barbero;
+
+select SUM(precioServicio) AS GananciaTotal from Cita;
+
+
+
 

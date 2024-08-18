@@ -197,5 +197,8 @@ public class barbero {
             JOptionPane.showMessageDialog(null, "no se pudo mostrar los registros. error" + e.toString());
         }
     }
+    
+    
+    
     }
 

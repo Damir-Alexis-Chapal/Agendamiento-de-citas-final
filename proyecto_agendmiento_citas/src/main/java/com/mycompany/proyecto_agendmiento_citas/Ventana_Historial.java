@@ -15,6 +15,7 @@ public class Ventana_Historial extends javax.swing.JFrame {
      */
     public Ventana_Historial() {
         initComponents();
+        this.setLocationRelativeTo(null);
         barbero objetoCita = new barbero();  
         objetoCita.mostrarHistorialCitas(jTable1);
     
@@ -36,6 +37,8 @@ public class Ventana_Historial extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         BotonRegresarMenuAdmin = new javax.swing.JButton();
+        BotonCalcularGanancias = new javax.swing.JButton();
+        CampoGananciaTotal = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -99,23 +102,38 @@ public class Ventana_Historial extends javax.swing.JFrame {
             }
         });
 
+        BotonCalcularGanancias.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        BotonCalcularGanancias.setText("CALCULAR GANANCIA TOTAL");
+        BotonCalcularGanancias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonCalcularGananciasActionPerformed(evt);
+            }
+        });
+
+        CampoGananciaTotal.setEditable(false);
+        CampoGananciaTotal.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(139, 139, 139))
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(47, 47, 47)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(304, 304, 304)
-                        .addComponent(BotonRegresarMenuAdmin)))
-                .addContainerGap(54, Short.MAX_VALUE))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(114, 114, 114)
+                                .addComponent(BotonRegresarMenuAdmin))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(28, 28, 28)
+                                .addComponent(CampoGananciaTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(BotonCalcularGanancias))))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,10 +141,16 @@ public class Ventana_Historial extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(BotonRegresarMenuAdmin)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(78, 78, 78)
+                        .addComponent(BotonCalcularGanancias)
+                        .addGap(50, 50, 50)
+                        .addComponent(CampoGananciaTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49)
+                        .addComponent(BotonRegresarMenuAdmin)))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -150,6 +174,13 @@ public class Ventana_Historial extends javax.swing.JFrame {
         Menu_Admin verVentana = new Menu_Admin ();
         verVentana.setVisible (true);
     }//GEN-LAST:event_BotonRegresarMenuAdminActionPerformed
+
+    private void BotonCalcularGananciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCalcularGananciasActionPerformed
+        // TODO add your handling code here:
+        cita  objetoCita = new cita();
+        double total = objetoCita.obtenerTotalGanancias();
+        CampoGananciaTotal.setText(String.valueOf(total));
+    }//GEN-LAST:event_BotonCalcularGananciasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -187,7 +218,9 @@ public class Ventana_Historial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonCalcularGanancias;
     private javax.swing.JButton BotonRegresarMenuAdmin;
+    private javax.swing.JTextField CampoGananciaTotal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

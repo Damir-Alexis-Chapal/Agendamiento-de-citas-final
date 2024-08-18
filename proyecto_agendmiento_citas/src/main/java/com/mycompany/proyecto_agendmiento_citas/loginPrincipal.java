@@ -84,6 +84,7 @@ public class loginPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         Ventana_Admin verVentana = new Ventana_Admin ();
         verVentana.setVisible (true);
+        this.dispose();
         
     }//GEN-LAST:event_btnAdminActionPerformed
 
@@ -91,6 +92,7 @@ public class loginPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here
         loginCliente verVentana = new loginCliente ();
         verVentana.setVisible (true);
+        this.dispose();
     }//GEN-LAST:event_btnClienteActionPerformed
 
     /**

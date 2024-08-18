@@ -4,7 +4,10 @@
  */
 package com.mycompany.proyecto_agendmiento_citas;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -17,6 +20,7 @@ public class Menu_Admin extends javax.swing.JFrame {
      */
     public Menu_Admin() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -35,8 +39,6 @@ public class Menu_Admin extends javax.swing.JFrame {
         BotonRegistroPersonal = new javax.swing.JButton();
         BotonAdminPersonal = new javax.swing.JButton();
         BotonHistorial = new javax.swing.JButton();
-        BotonAdminCitas = new javax.swing.JButton();
-        BotonReporteGanancias = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -87,12 +89,6 @@ public class Menu_Admin extends javax.swing.JFrame {
             }
         });
 
-        BotonAdminCitas.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        BotonAdminCitas.setText("ADMINISTRAR CITAS");
-
-        BotonReporteGanancias.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        BotonReporteGanancias.setText("REPORTE DE GANANCIAS");
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -102,25 +98,19 @@ public class Menu_Admin extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(BotonRegistroPersonal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(BotonHistorial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BotonAdminPersonal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BotonReporteGanancias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BotonAdminCitas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(BotonAdminPersonal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(75, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addContainerGap(52, Short.MAX_VALUE)
                 .addComponent(BotonRegistroPersonal)
-                .addGap(29, 29, 29)
+                .addGap(45, 45, 45)
                 .addComponent(BotonAdminPersonal)
-                .addGap(18, 18, 18)
+                .addGap(45, 45, 45)
                 .addComponent(BotonHistorial)
-                .addGap(18, 18, 18)
-                .addComponent(BotonAdminCitas)
-                .addGap(18, 18, 18)
-                .addComponent(BotonReporteGanancias)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addGap(71, 71, 71))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -157,15 +147,44 @@ public class Menu_Admin extends javax.swing.JFrame {
 
     private void BotonAdminPersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAdminPersonalActionPerformed
         // TODO add your handling code here:
-        Admin_Barberos verVentana = new Admin_Barberos();
-        verVentana.setVisible(true);
+        
+        Admin_Barberos verVentana = new Admin_Barberos ();
+        
+        String profesional = "";
+        Connection conexion = conectar_bd.conectar();
+
+        if (conexion != null) {
+            try {
+                String query = "SELECT * FROM barbero";
+                PreparedStatement preparedStatement = conexion.prepareStatement(query);
+
+                ResultSet resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()) {
+                    profesional = resultSet.getString("nombre");
+                    verVentana.jcBarberos.addItem(profesional);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    conexion.close();
+
+                } catch (SQLException e) {
+
+                    e.printStackTrace();
+                }
+            }
+        }
+        verVentana.setVisible (true);
 
     }//GEN-LAST:event_BotonAdminPersonalActionPerformed
 
     private void BotonHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonHistorialActionPerformed
         // TODO add your handling code here:
-        Ventana_Historial verVentana = new Ventana_Historial ();
-        verVentana.setVisible (true);
+        Ventana_Historial verVentana = new Ventana_Historial();
+        verVentana.setVisible(true);
+        
+        
         
     }//GEN-LAST:event_BotonHistorialActionPerformed
 
@@ -205,11 +224,9 @@ public class Menu_Admin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BotonAdminCitas;
     private javax.swing.JButton BotonAdminPersonal;
     private javax.swing.JButton BotonHistorial;
     private javax.swing.JButton BotonRegistroPersonal;
-    private javax.swing.JButton BotonReporteGanancias;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

@@ -95,6 +95,81 @@ public class cita {
             System.out.println(e);
             
         }
-
+    }
+    
+    public double obtenerTotalGanancias(){
+        double total = 0;
+        
+        Connection conexion= conectar_bd.conectar();
+        if (conexion != null) {
+            try {
+                String query = "select SUM(precioServicio) AS GananciaTotal from Cita";
+                PreparedStatement preparedStatement = conexion.prepareStatement(query);  
+                ResultSet resultSet = preparedStatement.executeQuery();
+                if (resultSet.next()) {
+                   total = resultSet.getDouble("GananciaTotal");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    conexion.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return total; 
     }
 }
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

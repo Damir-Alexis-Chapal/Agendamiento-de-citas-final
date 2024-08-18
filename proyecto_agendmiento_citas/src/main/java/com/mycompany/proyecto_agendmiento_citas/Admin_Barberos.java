@@ -4,6 +4,12 @@
  */
 package com.mycompany.proyecto_agendmiento_citas;
 
+import static com.mycompany.proyecto_agendmiento_citas.ventanaEditarCitaU.jcCitas;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author angel
@@ -31,14 +37,8 @@ public class Admin_Barberos extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        NombreBarbero1 = new javax.swing.JTextField();
-        CampoNombreBarbero2 = new javax.swing.JTextField();
-        CampoNombreBarbero3 = new javax.swing.JTextField();
-        CampoNombreBarbero4 = new javax.swing.JTextField();
-        BotonDespedirBarbero1 = new javax.swing.JButton();
-        BotonDespedirBarbero2 = new javax.swing.JButton();
-        BotonDespedirBarbero3 = new javax.swing.JButton();
-        BotonDespedirBarbero4 = new javax.swing.JButton();
+        jcBarberos = new javax.swing.JComboBox<>();
+        BotonDespedir = new javax.swing.JButton();
         BotonRegresarMenuAdmin = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
@@ -69,79 +69,38 @@ public class Admin_Barberos extends javax.swing.JFrame {
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
-        NombreBarbero1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        NombreBarbero1.setEnabled(false);
-        NombreBarbero1.addActionListener(new java.awt.event.ActionListener() {
+        jcBarberos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NombreBarbero1ActionPerformed(evt);
+                jcBarberosActionPerformed(evt);
             }
         });
 
-        CampoNombreBarbero2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        CampoNombreBarbero2.setEnabled(false);
-        CampoNombreBarbero2.addActionListener(new java.awt.event.ActionListener() {
+        BotonDespedir.setText("DESPEDIR");
+        BotonDespedir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CampoNombreBarbero2ActionPerformed(evt);
+                BotonDespedirActionPerformed(evt);
             }
         });
-
-        CampoNombreBarbero3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        CampoNombreBarbero3.setEnabled(false);
-
-        CampoNombreBarbero4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        CampoNombreBarbero4.setEnabled(false);
-
-        BotonDespedirBarbero1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        BotonDespedirBarbero1.setText("DESPEDIR");
-
-        BotonDespedirBarbero2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        BotonDespedirBarbero2.setText("DESPEDIR");
-
-        BotonDespedirBarbero3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        BotonDespedirBarbero3.setText("DESPEDIR");
-
-        BotonDespedirBarbero4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        BotonDespedirBarbero4.setText("DESPEDIR");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(NombreBarbero1, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
-                    .addComponent(CampoNombreBarbero2)
-                    .addComponent(CampoNombreBarbero3)
-                    .addComponent(CampoNombreBarbero4))
-                .addGap(83, 83, 83)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BotonDespedirBarbero1)
-                    .addComponent(BotonDespedirBarbero2)
-                    .addComponent(BotonDespedirBarbero3)
-                    .addComponent(BotonDespedirBarbero4))
+                .addGap(31, 31, 31)
+                .addComponent(jcBarberos, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(85, 85, 85)
+                .addComponent(BotonDespedir, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NombreBarbero1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotonDespedirBarbero1))
-                .addGap(35, 35, 35)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CampoNombreBarbero2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotonDespedirBarbero2))
-                .addGap(36, 36, 36)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CampoNombreBarbero3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotonDespedirBarbero3))
-                .addGap(38, 38, 38)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CampoNombreBarbero4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotonDespedirBarbero4))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addGap(134, 134, 134)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(BotonDespedir, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+                    .addComponent(jcBarberos))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
 
         BotonRegresarMenuAdmin.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -185,19 +144,62 @@ public class Admin_Barberos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void NombreBarbero1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreBarbero1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NombreBarbero1ActionPerformed
-
-    private void CampoNombreBarbero2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoNombreBarbero2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CampoNombreBarbero2ActionPerformed
-
     private void BotonRegresarMenuAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegresarMenuAdminActionPerformed
         // TODO add your handling code here:
         Menu_Admin verVentana = new Menu_Admin ();
         verVentana.setVisible (true);
     }//GEN-LAST:event_BotonRegresarMenuAdminActionPerformed
+
+    private void jcBarberosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcBarberosActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_jcBarberosActionPerformed
+
+    private void BotonDespedirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonDespedirActionPerformed
+        // TODO add your handling code here:
+        
+        int op = Integer.parseInt(JOptionPane.showInputDialog(null, "¿ESTÁS SEGURO QUE DESEA DESPEDIR AL BARBERO? \n\n1.Si\n2.No"));
+        switch (op) {
+
+            case 1:
+                Connection conexion = conectar_bd.conectar();
+                PreparedStatement preparedStatement = null;
+                try {
+
+                    String query = "DELETE FROM barbero WHERE id = ?";
+
+                    preparedStatement = conexion.prepareStatement(query);
+                    preparedStatement.setLong(1, Integer.parseInt((String) jcBarberos.getSelectedItem()));
+                    barbero barberos = new barbero();
+                    preparedStatement.setInt(1, barberos.obtenerId((String)jcBarberos.getSelectedItem()) );
+                    int rowsAffected = preparedStatement.executeUpdate();
+                    if (rowsAffected > 0) {
+                        System.out.println("El registro fue eliminado exitosamente.");
+                    } else {
+                        System.out.println("No se encontró ningún registro con el ID especificado.");
+                    }
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                } finally {
+                    // Cerrar el PreparedStatement y la conexión
+                    try {
+                        if (preparedStatement != null) {
+                            preparedStatement.close();
+                        }
+                        if (preparedStatement != null) {
+                            preparedStatement.close();
+                        }
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            case 2:
+                break;
+        }
+    }//GEN-LAST:event_BotonDespedirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -235,19 +237,13 @@ public class Admin_Barberos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BotonDespedirBarbero1;
-    private javax.swing.JButton BotonDespedirBarbero2;
-    private javax.swing.JButton BotonDespedirBarbero3;
-    private javax.swing.JButton BotonDespedirBarbero4;
+    private javax.swing.JButton BotonDespedir;
     private javax.swing.JButton BotonRegresarMenuAdmin;
-    private javax.swing.JTextField CampoNombreBarbero2;
-    private javax.swing.JTextField CampoNombreBarbero3;
-    private javax.swing.JTextField CampoNombreBarbero4;
-    private javax.swing.JTextField NombreBarbero1;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    public static javax.swing.JComboBox<String> jcBarberos;
     // End of variables declaration//GEN-END:variables
 }

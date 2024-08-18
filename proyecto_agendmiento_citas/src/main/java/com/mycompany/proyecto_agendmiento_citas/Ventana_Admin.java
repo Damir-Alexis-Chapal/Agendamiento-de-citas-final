@@ -17,6 +17,7 @@ public class Ventana_Admin extends javax.swing.JFrame {
      */
     public Ventana_Admin() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

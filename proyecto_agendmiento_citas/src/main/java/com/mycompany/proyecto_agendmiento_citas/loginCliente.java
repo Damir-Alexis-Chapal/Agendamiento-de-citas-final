@@ -129,6 +129,7 @@ public class loginCliente extends javax.swing.JFrame {
                     nombreU=txtLoginUsuario.getText();
                     ventanaClientePr verVentana= new ventanaClientePr();
                     verVentana.setVisible(true);
+                    this.dispose(); 
                 } else {
                     JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos.");
                 }
