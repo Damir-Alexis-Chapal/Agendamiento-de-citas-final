@@ -39,7 +39,7 @@ public class loginCliente extends javax.swing.JFrame {
         btnIniciarSesion = new javax.swing.JToggleButton();
         btn_registrarUsuario = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setText("USUARIO:");
 
@@ -89,11 +89,11 @@ public class loginCliente extends javax.swing.JFrame {
                             .addComponent(txtLogContraseñaU, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtLoginUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(165, 165, 165)
-                        .addComponent(btn_registrarUsuario))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(127, 127, 127)
-                        .addComponent(btnIniciarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnIniciarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(156, 156, 156)
+                        .addComponent(btn_registrarUsuario)))
                 .addContainerGap(118, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(

@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Connection;
+import java.sql.SQLIntegrityConstraintViolationException;
 
 /**
  *
@@ -88,8 +89,10 @@ public class cliente {
             cs.execute();
             JOptionPane.showMessageDialog(null, "REGISTRO EXITOSO");
 
+        } catch (SQLIntegrityConstraintViolationException e) {
+            JOptionPane.showMessageDialog(null, "EL USUARIO YA EXISTE");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "ERROR: " + e);
+            System.out.println( "ERROR: " + e.getMessage());
         }
 
     }

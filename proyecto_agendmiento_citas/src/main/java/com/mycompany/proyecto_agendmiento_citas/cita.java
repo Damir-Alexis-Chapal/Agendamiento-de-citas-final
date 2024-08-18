@@ -89,7 +89,7 @@ public class cita {
             cs.setInt(6, precioServicio);
 
             cs.execute();
-            JOptionPane.showMessageDialog(null, "REGISTRO EXITOSO");
+           System.out.println("REGISTRO EXITOSO DE LA CITA");
 
         } catch (Exception e) {
             System.out.println(e);

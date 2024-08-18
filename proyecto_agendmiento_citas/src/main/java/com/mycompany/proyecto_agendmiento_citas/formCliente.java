@@ -37,7 +37,7 @@ public class formCliente extends javax.swing.JFrame {
         txt_apellido = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setText("NOMBRE:");
 

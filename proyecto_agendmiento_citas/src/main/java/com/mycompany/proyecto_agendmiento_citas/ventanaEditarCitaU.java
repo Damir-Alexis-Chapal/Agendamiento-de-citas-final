@@ -64,7 +64,7 @@ public class ventanaEditarCitaU extends javax.swing.JFrame {
         jcProfesiona = new javax.swing.JComboBox<>();
         btnEditar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setText("USUARIO: ");
 
@@ -154,26 +154,30 @@ public class ventanaEditarCitaU extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(txtUsuario)
-                    .addComponent(txtFecha)
-                    .addComponent(txtHora)
-                    .addComponent(txtBarbero)
-                    .addComponent(txtServicio)
-                    .addComponent(txtPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
-                    .addComponent(jcCitas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 178, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel1))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtUsuario)
+                            .addComponent(txtFecha)
+                            .addComponent(txtHora)
+                            .addComponent(txtBarbero)
+                            .addComponent(txtServicio)
+                            .addComponent(txtPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                            .addComponent(jcCitas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(85, 85, 85)
+                        .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -206,9 +210,9 @@ public class ventanaEditarCitaU extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
                             .addComponent(jLabel8))
@@ -245,6 +249,7 @@ public class ventanaEditarCitaU extends javax.swing.JFrame {
                                     .addComponent(txtServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel5)))))
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jcAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel15))
@@ -350,10 +355,11 @@ public class ventanaEditarCitaU extends javax.swing.JFrame {
                     preparedStatement.setInt(1, Integer.parseInt((String) jcCitas.getSelectedItem()));
 
                     int rowsAffected = preparedStatement.executeUpdate();
-                    if (rowsAffected > 0) {
-                        System.out.println("El registro fue eliminado exitosamente.");
+                    if (rowsAffected > 0) {                      
+                        jcCitas.removeItem(jcCitas.getSelectedItem());
+                        JOptionPane.showMessageDialog(null,"La cita registrada fue eliminada exitosamente.");
                     } else {
-                        System.out.println("No se encontró ningún registro con el ID especificado.");
+                        System.out.println("No se encontró ningúna cita con el ID especificado.");
                     }
 
                 } catch (SQLException e) {
@@ -458,7 +464,7 @@ public class ventanaEditarCitaU extends javax.swing.JFrame {
             } else if ("Diciembre".equals(jcMes.getSelectedItem())) {
                 mes = 12;
             }
-            
+
             LocalDate fecha = LocalDate.of(año, mes, dia);
             Date sqlDate = Date.valueOf(fecha);
 
@@ -485,7 +491,7 @@ public class ventanaEditarCitaU extends javax.swing.JFrame {
             int rowsAffected = pstmt.executeUpdate();
 
             if (rowsAffected > 0) {
-                JOptionPane.showMessageDialog(null,"El registro fue actualizado exitosamente.");
+                JOptionPane.showMessageDialog(null, "El registro fue actualizado exitosamente.");
                 this.dispose();
             } else {
                 System.out.println("No se encontró ningún registro con el ID especificado.");

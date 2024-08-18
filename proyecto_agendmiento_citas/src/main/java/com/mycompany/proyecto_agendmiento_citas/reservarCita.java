@@ -9,6 +9,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.ButtonModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,9 +24,8 @@ public class reservarCita extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
     }
-    
+
     public String nombreUsuario;
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -61,7 +61,7 @@ public class reservarCita extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         txtPrecioServicio = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jcDia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -294,7 +294,7 @@ public class reservarCita extends javax.swing.JFrame {
         // TODO add your handling code here:
         String item = (String) jcMes.getSelectedItem();
         if (item == "Agosto") {
-            
+
             LocalDate fechaActual = LocalDate.now();
             int diaDelMes = fechaActual.getDayOfMonth();
             jcDia.removeAllItems();
@@ -387,50 +387,54 @@ public class reservarCita extends javax.swing.JFrame {
     }//GEN-LAST:event_jcEstiloActionPerformed
 
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
-             
-        int hour=Integer.parseInt((String) jcHora.getSelectedItem());
-        int minuto= Integer.parseInt((String) jcMinuto.getSelectedItem());
-        int año=Integer.parseInt((String) jcAnio.getSelectedItem());
-        int dia=Integer.parseInt((String) jcDia.getSelectedItem());
-        int mes=0;
-        if(jcMes.getSelectedItem()=="Agosto"){
-            mes=8;
+
+        if (rbBarberia.isSelected() || rbPeluqueria.isSelected() || rbFacial.isSelected()) {
+
+            int hour = Integer.parseInt((String) jcHora.getSelectedItem());
+            int minuto = Integer.parseInt((String) jcMinuto.getSelectedItem());
+            int año = Integer.parseInt((String) jcAnio.getSelectedItem());
+            int dia = Integer.parseInt((String) jcDia.getSelectedItem());
+            int mes = 0;
+            if (jcMes.getSelectedItem() == "Agosto") {
+                mes = 8;
+            }
+            if (jcMes.getSelectedItem() == "Septiembre") {
+                mes = 9;
+            }
+            if (jcMes.getSelectedItem() == "Octubre") {
+                mes = 10;
+            }
+            if (jcMes.getSelectedItem() == "Noviembre") {
+                mes = 11;
+            }
+            if (jcMes.getSelectedItem() == "Diciembre") {
+                mes = 12;
+            }
+
+            LocalDate fecha = LocalDate.of(año, mes, dia);
+            LocalTime hora = LocalTime.of(hour, minuto);
+            int precioServicio = Integer.parseInt(txtPrecioServicio.getText());
+
+            ventanaPago verVent = new ventanaPago();
+
+            verVent.txtUsuarioN.setText(loginCliente.nombreU);
+            verVent.txtServicio.setText((String) jcEstilo.getSelectedItem());
+            verVent.txtBarbero.setText((String) jcProfesional.getSelectedItem());
+
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            String dateString = fecha.format(formatter);
+            verVent.txtFecha.setText(dateString);
+
+            DateTimeFormatter formatterDos = DateTimeFormatter.ofPattern("HH:mm:ss");
+            String timeString = hora.format(formatterDos);
+            verVent.txtHora.setText(timeString);
+
+            verVent.txtTotal.setText(String.valueOf(precioServicio));
+            verVent.setVisible(true);
+            this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(null, "POR FAVOR SELECCIONE UN SERVICIO");
         }
-        if(jcMes.getSelectedItem()=="Septiembre"){
-            mes=9;
-        }
-        if(jcMes.getSelectedItem()=="Octubre"){
-            mes=10;
-        }
-        if(jcMes.getSelectedItem()=="Noviembre"){
-            mes=11;
-        }
-        if(jcMes.getSelectedItem()=="Diciembre"){
-            mes=12;
-        }
-        
-        LocalDate fecha= LocalDate.of(año,mes,dia);
-        LocalTime hora= LocalTime.of(hour,minuto);
-        int precioServicio= Integer.parseInt(txtPrecioServicio.getText());
-        
-        ventanaPago verVent= new ventanaPago();
-        
-        verVent.txtUsuarioN.setText(loginCliente.nombreU);
-        verVent.txtServicio.setText((String)jcEstilo.getSelectedItem());
-        verVent.txtBarbero.setText((String) jcProfesional.getSelectedItem());
-        
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        String dateString = fecha.format(formatter);
-        verVent.txtFecha.setText(dateString);
-        
-        DateTimeFormatter formatterDos = DateTimeFormatter.ofPattern("HH:mm:ss");
-        String timeString = hora.format(formatterDos);
-        verVent.txtHora.setText(timeString);
-        
-        verVent.txtTotal.setText(String.valueOf(precioServicio));
-        
-        verVent.setVisible(true);
-       
     }//GEN-LAST:event_btnContinuarActionPerformed
 
     private void actualizarJc(String[] items) {
