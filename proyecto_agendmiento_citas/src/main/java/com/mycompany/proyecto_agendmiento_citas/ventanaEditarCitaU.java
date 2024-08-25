@@ -354,9 +354,9 @@ public class ventanaEditarCitaU extends javax.swing.JFrame {
                     preparedStatement.setInt(1, Integer.parseInt((String) jcCitas.getSelectedItem()));
 
                     int rowsAffected = preparedStatement.executeUpdate();
-                    if (rowsAffected > 0) {                      
+                    if (rowsAffected > 0) {
                         jcCitas.removeItem(jcCitas.getSelectedItem());
-                        JOptionPane.showMessageDialog(null,"La cita registrada fue eliminada exitosamente.");
+                        JOptionPane.showMessageDialog(null, "La cita registrada fue eliminada exitosamente.");
                     } else {
                         System.out.println("No se encontró ningúna cita con el ID especificado.");
                     }

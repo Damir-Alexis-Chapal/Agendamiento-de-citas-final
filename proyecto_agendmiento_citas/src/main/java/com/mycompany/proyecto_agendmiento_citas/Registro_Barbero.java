@@ -168,9 +168,6 @@ public class Registro_Barbero extends javax.swing.JFrame {
 
     private void BotonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarActionPerformed
         // TODO add your handling code here:
-        Menu_Admin verVentana = new Menu_Admin ();
-        verVentana.setVisible (true);
-
         barbero insertion = new barbero();
         insertion.registrar_barbero(CampoNombre.getText(),  CampoApellido.getText());
         this.dispose();

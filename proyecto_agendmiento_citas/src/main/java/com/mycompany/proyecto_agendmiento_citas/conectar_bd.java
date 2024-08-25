@@ -21,7 +21,7 @@ public class conectar_bd {
             // se configura la URL, usuario y contraseña de la bd, datos necesarios para hacer la conexión
             String url = "jdbc:mysql://localhost:3306/agendamiento";
             String usuario = "root";
-            String contraseña = "angel180304";
+            String contraseña = "Alexischapal12+";
             
             // aqui establezco la conexión
             connection = DriverManager.getConnection(url, usuario, contraseña);

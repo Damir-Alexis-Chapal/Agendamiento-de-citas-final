@@ -12,7 +12,6 @@ public class Proyecto_agendmiento_citas {
 
     public static void main(String[] args) {
         loginPrincipal vLoginPr= new loginPrincipal();
-        vLoginPr.setVisible(true);
-        
+        vLoginPr.setVisible(true);     
     }
 }
