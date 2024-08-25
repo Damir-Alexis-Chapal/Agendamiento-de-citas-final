@@ -40,7 +40,6 @@ public class Menu_Admin extends javax.swing.JFrame {
         BotonAdminPersonal = new javax.swing.JButton();
         BotonHistorial = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
